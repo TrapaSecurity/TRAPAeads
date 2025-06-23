@@ -20,5 +20,6 @@ export async function useRegister(username, password, sHandler, eHandler) {
 
 export async function useGetProfile(sHandler, eHandler) {
   const authStore = useAuthStore()
+  console.log(authStore.accessToken)
   sHandler(authStore.accessToken)
 }

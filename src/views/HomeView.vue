@@ -45,7 +45,7 @@ onMounted(async () => {
   })
   if (authStore.isAuth) {
     await useGetProfile((data) => {
-      currUser.value = data.username
+      currUser.value = data
     })
   }
 })
