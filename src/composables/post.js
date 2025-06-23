@@ -1,6 +1,4 @@
 import { useAuthStore } from '@/stores/auth'
-import { useFetch } from '@/composables/auth'
-import { useGetAPIURL } from '@/composables/utils'
 
 
 export async function useGetPosts(sHandler, eHandler) {

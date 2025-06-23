@@ -6,7 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/TRAPAeads/',
+  base: process.env.NODE_ENV === 'production' ? '/TRAPAeads/' : '/',
   server: {
     port: 3000
   },

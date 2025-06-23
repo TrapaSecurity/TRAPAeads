@@ -147,10 +147,10 @@ onMounted(async () => {
           <div class="login-container">
             <h2 class="text-center">Log in for TRAPAeads</h2>
             <p class="desc text-center">See what people are talking about and join the conversation.</p>
-            <div class="other container-fluid d-flex align-items-center cursor-pointer">
-              <img src="/logo.png" width="24">
-              <p class="m-0">Continue with TRAPAgram</p>
-            </div>
+            <RouterLink :to="{ name: 'login' }" class="text-decoration-none other container-fluid d-flex align-items-center cursor-pointer" style="color: #f3f5f7;">
+                <img src="/logo.png" width="24">
+                <p class="m-0">Continue with TRAPAgram</p>
+            </RouterLink>
             <RouterLink :to="{ name: 'login' }" class="text-decoration-none" style="color: #777;">
               <p class="login-link text-center">Log in with username instead</p>
             </RouterLink>
@@ -245,6 +245,14 @@ onMounted(async () => {
 <style scoped>
 .login-btn {
   display: none;
+}
+
+.other {
+  transition: transform 0.1s ease-in-out; 
+}
+
+.other:active {
+  transform: scale(0.98);
 }
 
 @media (max-width: 767px) {
