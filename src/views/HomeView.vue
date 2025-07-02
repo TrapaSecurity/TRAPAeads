@@ -82,7 +82,7 @@ onMounted(async () => {
                   <h5 class="m-0">{{ currUser }}</h5>
                 </div>
                 <div class="position-relative">
-                  <textarea v-model="postContent" class="content" style="width: 480px;; border: none; background-color: transparent; outline: none; resize: none;" placeholder="What's new?"></textarea>
+                  <textarea v-model="postContent" class="content" style="width: 480px; border: none; background-color: transparent; outline: none; resize: none;" placeholder="What's new?"></textarea>
                   <button @click="post" class="position-absolute top-0 z-2" style="border: 0.5px solid rgba(243, 245, 247, 0.15); border-radius: 6px; background-color: rgba(24, 24, 24, 0.7); padding: 3px 12px; font-size: 13px; right: -12px;">Post</button>
                 </div>
               </div>
@@ -182,13 +182,13 @@ onMounted(async () => {
                   <img src="/logo.png" width="38">
                 </div>
               </div>
-            <div>
+            <div style="overflow: hidden;">
               <div class="content-info d-flex align-items-center justify-content-start gap-3">
                 <h5 class="m-0">{{ post.author }}</h5>
                 <p class="m-0">{{ post.createTime }}h</p>
               </div>
               <div>
-                <p class="content mb-1">{{ post.content }}</p>
+                <p class="content mb-1" style="white-space: pre-line;">{{ post.content }}</p>
               </div>
               <div class="actions-container d-flex align-items-end justify-content-start">
                 <div class="d-flex justify-content-start align-items-center gap-1">

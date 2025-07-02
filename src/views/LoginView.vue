@@ -28,7 +28,7 @@ async function login() {
     authStore.set(data)
     router.push({ name: 'home' })
   }, (status) => {
-    if (status === 'Doris3127') {
+    if (status === 'user2') {
       enable2fa.value = true
       authCodeError.value = true
     } else {
