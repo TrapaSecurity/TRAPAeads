@@ -6,9 +6,9 @@ import { useLocalStorage } from '@/composables/utils'
 
 export const useAuthStore = defineStore('auth', () => {
   const accessToken = ref(localStorage.getItem('auth.accessToken'))
-  const username = ref('')
-  const password = ref('')
-  const authCode = ref('')
+  const username = ref(localStorage.getItem('auth.username'))
+  const password = ref(localStorage.getItem('auth.password'))
+  const authCode = ref(localStorage.getItem('auth.authCode'))
   useLocalStorage(accessToken, 'auth.accessToken')
   useLocalStorage(username, 'auth.username')
   useLocalStorage(password, 'auth.password')

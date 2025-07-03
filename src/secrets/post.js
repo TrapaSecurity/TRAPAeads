@@ -1,3 +1,5 @@
+import SHA256 from 'crypto-js/sha256'
+
 import { useAuthStore } from '@/stores/auth'
 
 
@@ -67,10 +69,9 @@ https://trapa.tw/products/
 
 export async function getDanPost() {
   const authStore = useAuthStore()
-  let module = await import('@/secrets/ed2d932989fd4d5a124ef1a0dcc411646fdfe65bf3a6d74f858f74f61282ce8b.js')
   return {
     id: 3, likes: 1,
-    content: `偷偷把秘密藏在私人的貼文，應該沒有人會發現吧 👀\n\n${module.secret}`,
+    content: `偷偷把秘密藏在私人的貼文，應該沒有人會發現吧 👀\n\nTRAPA{${SHA256(authStore.username + authStore.password + authStore.authCode).toString()}}`,
     create_time: "2025-06-22T06:09:22.131Z",
     author_name: authStore.username
   }
@@ -78,10 +79,9 @@ export async function getDanPost() {
 
 export async function getDorisPost() {
   const authStore = useAuthStore()
-  let module = await import('@/secrets/86e1d039770ea0f017a0ac9027247f7c7d55d1d07de504c4eab8b9456ea1183e.js')
   return {
     id: 4, likes: 1,
-    content: `偷偷把秘密藏在私人的貼文，應該沒有人會發現吧，而且我還有開 2FA 耶 👀\n\n${module.secret}`,
+    content: `偷偷把秘密藏在私人的貼文，應該沒有人會發現吧，而且我還有開 2FA 耶 👀\n\nTRAPA{${SHA256(authStore.username + authStore.password + authStore.authCode).toString()}}`,
     create_time: "2025-06-22T13:58:22.131Z",
     author_name: authStore.username
   }
