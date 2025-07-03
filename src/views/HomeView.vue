@@ -111,7 +111,7 @@ onMounted(async () => {
                     <p class="m-0">{{ post.createTime }}h</p>
                   </div>
                   <div>
-                    <p class="content mb-1" style="white-space: pre-line;">{{ post.content }}</p>
+                    <p class="content mb-1" style="white-space: pre-line; word-break: break-all;">{{ post.content }}</p>
                   </div>
                   <div class="actions-container d-flex align-items-end justify-content-start">
                     <div class="cursor-pointer d-flex justify-content-start align-items-center gap-1">
@@ -188,7 +188,7 @@ onMounted(async () => {
                 <p class="m-0">{{ post.createTime }}h</p>
               </div>
               <div>
-                <p class="content mb-1" style="white-space: pre-line;">{{ post.content }}</p>
+                <p class="content mb-1" style="white-space: pre-line; word-break: break-all;">{{ post.content }}</p>
               </div>
               <div class="actions-container d-flex align-items-end justify-content-start">
                 <div class="d-flex justify-content-start align-items-center gap-1">
