@@ -26,6 +26,9 @@ watch(authCode, () => { authCodeError.value = false })
 async function login() {
   await useLogin(username.value, password.value, authCode.value, (data) => {
     authStore.set(data)
+    authStore.username = username.value
+    authStore.password = password.value
+    authStore.authCode = authCode.value
     router.push({ name: 'home' })
   }, (status) => {
     if (status === 'user2') {
