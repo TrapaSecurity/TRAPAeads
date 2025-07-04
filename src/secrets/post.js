@@ -1,6 +1,19 @@
 import SHA256 from 'crypto-js/sha256'
+import CryptoJS from 'crypto-js'
 
 import { useAuthStore } from '@/stores/auth'
+
+
+const iv = 'Hk5yl3CIU/kG468ml0JhXg=='
+const secret1Enc = 'RBFqMHqgUDWM+12bR6BlmVlqhGvG2yC1hJLKBpk2fDkIGIIXLWvnEvuLRnIkrznp'
+const secret2Enc = 'kQA/P+uQel3fJ6mJXCPsRZcccobF+5eQ+8uZcEu2b9BlEwktGt1o/VTjVdFpoe7GNRsy0M72+jZNjbBFXmLi6w=='
+
+
+function AESDecrypt(cipher, key, iv) {
+  return CryptoJS.AES.decrypt({ ciphertext: cipher }, key, {
+    iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7,
+  }).toString(CryptoJS.enc.Utf8)
+}
 
 
 export const TRAPAPOST = [
@@ -69,9 +82,10 @@ https://trapa.tw/products/
 
 export async function getDanPost() {
   const authStore = useAuthStore()
+  const secret1 = AESDecrypt(CryptoJS.enc.Base64.parse(secret1Enc), SHA256(authStore.username + authStore.password + authStore.authCode), CryptoJS.enc.Base64.parse(iv))
   return {
     id: 3, likes: 1,
-    content: `偷偷把秘密藏在私人的貼文，應該沒有人會發現吧 👀\n\nTRAPA{${SHA256(authStore.username + authStore.password + authStore.authCode).toString()}}`,
+    content: `偷偷把秘密藏在私人的貼文，應該沒有人會發現吧 👀\n\n${secret1}`,
     create_time: "2025-06-22T06:09:22.131Z",
     author_name: authStore.username
   }
@@ -79,9 +93,10 @@ export async function getDanPost() {
 
 export async function getDorisPost() {
   const authStore = useAuthStore()
+  const secret2 = AESDecrypt(CryptoJS.enc.Base64.parse(secret2Enc), SHA256(authStore.username + authStore.password + authStore.authCode), CryptoJS.enc.Base64.parse(iv))
   return {
     id: 4, likes: 1,
-    content: `偷偷把秘密藏在私人的貼文，應該沒有人會發現吧，而且我還有開 2FA 耶 👀\n\nTRAPA{${SHA256(authStore.username + authStore.password + authStore.authCode).toString()}}`,
+    content: `偷偷把秘密藏在私人的貼文，應該沒有人會發現吧，而且我還有開 2FA 耶 👀\n\n${secret2}`,
     create_time: "2025-06-22T13:58:22.131Z",
     author_name: authStore.username
   }
